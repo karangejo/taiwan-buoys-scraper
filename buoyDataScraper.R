@@ -44,6 +44,7 @@ GetBuoyData<- function(buoyUrl,tideUrl){
   #buoydata <- loadJavascriptExtractTableToDF(FugangBuoyURL)
   dataset <- loadJavascriptExtractTableToDF(buoyUrl)
   buoydata <- loadJavascriptExtractTableToDF(tideUrl)
+  #must add a check to see if there is any data and handle if there is none
   #dataset = htmltab(buoyPage)
   #buoydata = htmltab(tidePage)
   #print(head(dataset))
@@ -58,6 +59,7 @@ GetBuoyData<- function(buoyUrl,tideUrl){
   dataset$WavePeriod = dataset[,"WP(sec)"]
   dataset$WindSpeed = dataset[,"Mean Wind Speed                   (m/s)       (BS)"]
   dataset$WindDirection = dataset[,"Wind Dir"]
+  # must check if the tide is empty or malfunctioning and handle this apropriately
   dataset$Tide = buoydata[,c("Tidal Height(m)")]
   
   # exclude the long names
